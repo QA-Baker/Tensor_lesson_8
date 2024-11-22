@@ -8,7 +8,19 @@
 
 
 # Здесь пишем код
-
+def segment(point1, point2):
+    try:
+        # Пытаемся сложить координаты
+        return sum(point1) + sum(point2)
+    except TypeError:
+        # Вызываем "unsupported operand type(s) for +: 'int' and 'str'"
+        try:
+            _ = point1[0] + point2[0]
+        except TypeError as type_error:
+            return str(type_error)[::-1]
+    except Exception as e:
+        # Обрабатываем другие исключения
+        return str(e)[::-1]
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
