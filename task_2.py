@@ -17,7 +17,27 @@ import unittest  # Не удалять
 
 
 # Здесь пишем код
+class Trigon:
+    def __init__(self, *sides):
+        # Проверка на количество аргументов
+        if len(sides) != 3:
+            raise IndexError(f"Передано {len(sides)} аргументов, а ожидается 3")
 
+        # Проверка на тип данных
+        if not all(isinstance(side, (int, float)) for side in sides):
+            raise TypeError("Стороны должны быть числами")
+
+        # Проверка на положительные значения
+        if not all(side > 0 for side in sides):
+            raise ValueError("Стороны должны быть положительными")
+
+        # Проверка на неравенство треугольника
+        a, b, c = sides
+        if not (a + b > c and a + c > b and b + c > a):
+            raise Exception("Не треугольник")
+
+        # Сохранение сторон, если все проверки пройдены
+        self.sides = sides
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
